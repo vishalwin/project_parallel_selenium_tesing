@@ -2,7 +2,7 @@
 from pytest_bdd import scenarios, given, when, then, parsers
 import time
 from pages.login_page import LoginPage
-
+from openpyxl import load_workbook
 
 scenarios("../features/login.feature")
 
@@ -14,7 +14,10 @@ def launch_site(driver):
 @when(parsers.parse('user enters username "{username}"'))
 def enter_username(driver, username):
     page = LoginPage(driver)
-   
+    wb=load_workbook(r"C:\Users\Dell\project_parallel_selenium_tesing\sample.xlsx")
+    sheet = wb.active
+    
+    username = sheet["A2"].value
     page.enter_username(username)
     
 @when(parsers.parse('user enters password "{password}"'))
