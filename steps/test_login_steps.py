@@ -32,7 +32,7 @@ def click_login(driver):
     page= LoginPage(driver)
     
     page.click_login()
-    time.sleep(30)
+  
     
 @then("user should see products page")
 def verify_pdoducts_page(driver):

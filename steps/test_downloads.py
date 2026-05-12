@@ -27,13 +27,12 @@ def switch_iframe(driver):
     
 @when("user clicks Downloads link")
 def click_download(driver):
-    downloads = WebDriverWait(driver,
-                              20).until(
-    EC.element_to_be_clickable(
-     (By.LINK_TEXT,"Downloads")
-     )
+    downloads =  WebDriverWait(driver,20).until(
+        EC.presence_of_all_elements_located((By.XPATH,"//a[contains(text(),'Downloads')]"))
     )
-    downloads.click()
+    driver.execute_script(
+        "arguments[0].scrollIntoView(true);", downloads
+    )
     
 @then("Downloads page should open")
 def verify(driver):
