@@ -1,21 +1,56 @@
-import mysql.connector
+
+from pymongo import MongoClient
 
 def get_login_data():
-    conn  = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root",
-        database ="saucedemodb"
+    client = MongoClient(
+        "mongodb://localhost:27017/"
     )
     
-    cursor = conn.cursor()
+    db = client["saucedemodb"]
     
-    query = "select username, password from login_users where username like 'standard_user'" 
+    collection = db["login_users"]
     
-    cursor.execute(query)
+    user = collection.find_one()
+    client.close()
     
-    data= cursor.fetchone()
-    conn.close()
+    return user["username"], user["password"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import mysql.connector
+
+# def get_login_data():
+#     conn  = mysql.connector.connect(
+#         host="localhost",
+#         user="root",
+#         password="root",
+#         database ="saucedemodb"
+#     )
     
-    return data 
+#     cursor = conn.cursor()
+    
+#     query = "select username, password from login_users where username like 'standard_user'" 
+    
+#     cursor.execute(query)
+    
+#     data= cursor.fetchone()
+#     conn.close()
+    
+#     return data 
        
