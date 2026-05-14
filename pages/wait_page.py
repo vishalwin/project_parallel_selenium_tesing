@@ -15,9 +15,9 @@ class WaitsPage:
     def wait_for_text_box1(self):
             
         #create a wait object
-        wait = WebDriverWait(self.driver,10)
+        # wait = WebDriverWait(self.driver,100)
         
-        #create textbox and add wait to that 
-        textbox= wait.until(EC.visibility_of_element_located(self.TEXTBOX1))
-        
+        # #create textbox and add wait to that 
+        # textbox= wait.until(EC.visibility_of_element_located(self.TEXTBOX1))
+        textbox = self.driver.find_element(*self.TEXTBOX1)
         return textbox.is_displayed()
