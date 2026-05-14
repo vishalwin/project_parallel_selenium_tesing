@@ -10,5 +10,5 @@ data =[
 
 df=pd.DataFrame(data, columns=["Chrome","Firefox","Edge"])
 sns.heatmap(df,annot=True)
-plt.title("Brower Execution Report")
+plt.title("Brower Execution Report 6 - 7")
 plt.show()

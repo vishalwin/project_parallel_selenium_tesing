@@ -3,25 +3,24 @@ from pytest_bdd import scenarios, given, when, then, parsers
 import time
 from pages.login_page import LoginPage
 from openpyxl import load_workbook
+from utils.db_utils import get_login_data
 
 scenarios("../features/login.feature")
 
+username, password = get_login_data() 
 @given("user launches saucedemo site")
 def launch_site(driver):
     page = LoginPage(driver)
     page.open()
 
-@when(parsers.parse('user enters username "{username}"'))
-def enter_username(driver, username):
+@when(parsers.parse('user enters username'))
+def enter_username(driver):
     page = LoginPage(driver)
     wb=load_workbook(r"C:\Users\Dell\project_parallel_selenium_tesing\sample.xlsx")
-    sheet = wb.active
-    
-    username = sheet["A2"].value
     page.enter_username(username)
     
-@when(parsers.parse('user enters password "{password}"'))
-def enter_password(driver, password):
+@when(parsers.parse('user enters password'))
+def enter_password(driver):
    
     page= LoginPage(driver)
     page.enter_password(password)
@@ -30,7 +29,7 @@ def enter_password(driver, password):
 @when("user clicks login button")
 def click_login(driver):
     page= LoginPage(driver)
-    
+    time.sleep(30)
     page.click_login()
   
     
