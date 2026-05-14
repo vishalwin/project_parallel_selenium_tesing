@@ -53,3 +53,13 @@ df= pd.DataFrame(data)
 
 print("Pandas dataframe")
 print(df)
+
+# highes salary
+high_salary = df[df["salary"] == "100"]
+
+print(high_salary)
+
+#group
+
+summary = df.groupby('department')['salary'].mean()
+print(summary)
