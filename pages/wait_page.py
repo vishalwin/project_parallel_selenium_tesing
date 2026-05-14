@@ -9,9 +9,11 @@ class WaitsPage:
     def __init__(self,driver):
         self.driver = driver
         
-    def click_add_textbox(self,driver):
+    def click_add_textbox(self):
         self.driver.find_element(*self.ADD_TEXTBOX_BTN).click()
         
+    def wait_for_text_box1(self):
+            
         #create a wait object
         wait = WebDriverWait(self.driver,10)
         

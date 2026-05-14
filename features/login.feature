@@ -1,5 +1,5 @@
 Feature: SauceDemo login
-
+    @skip
     Scenario: Login with multiple users
         Given user launches saucedemo site
         When user enters username

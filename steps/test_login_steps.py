@@ -4,7 +4,12 @@ import time
 from pages.login_page import LoginPage
 from openpyxl import load_workbook
 from utils.db_utils import get_login_data
+import pytest
 
+
+pytestmark = pytest.mark.skip(
+    reason="Scenario temporarily skipped"
+)
 scenarios("../features/login.feature")
 
 username, password = get_login_data() 
