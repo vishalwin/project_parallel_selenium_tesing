@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
-
+import threading
 import time
 
 def task(num):
@@ -8,12 +8,13 @@ def task(num):
     time.sleep(5)
     
     print(f"Task {num} completed..")
+    print(threading.current_thread().name)
     
     return f"Result of task {num}" 
 def main():
         start= time.time()
     
-        with ThreadPoolExecutor(max_workers=3) as executor:
+        with ThreadPoolExecutor(max_workers=5) as executor:
             results = executor.map(task,[1,2,3,4,5])
             #print the returned result
             for result in results:
