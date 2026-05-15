@@ -35,8 +35,8 @@ def verify_title(driver):
     assert "Basic Controls" in title
     
 
-@then("user switces back to parent windows")
+@then("user switches back to parent window")
 def switch_parent_window(driver, request):
     parent_window = request.config.parent_window
-    driver.switch_to_window(parent_window)
-    print("back to parent window welcome")
+    driver.switch_to.window(parent_window)
+    print("back to parent window")

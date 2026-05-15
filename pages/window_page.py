@@ -15,19 +15,18 @@ class WindowPage:
         
     
     def switch_to_child_window(self):
-        #store ref to parent window
         parent_window = self.driver.current_window_handle
-        
+
         WebDriverWait(self.driver,10).until(
-            lambda d: len(d.window_handles) >1
+            lambda d: len(d.window_handles) > 1
         )
-        all_window = self.driver.window_handles
-        
-        for window in all_window:
+        all_windows = self.driver.window_handles
+
+        for window in all_windows:
             if window != parent_window:
                 self.driver.switch_to.window(window)
                 break
-            return parent_window
+        return parent_window
     def get_page_title(self):
         return self.driver.title
     
